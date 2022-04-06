@@ -7,19 +7,23 @@ import pandas
 
 # decorator to access the app
 @app.route("/")
-@app.route("/index")
-def index():
-    url = "http://127.0.0.1:5000/api"
+@app.route("/home")
+def home():
+    return render_template("home.html")
+
+
+@app.route("/trends", methods = ['GET', 'POST'])
+def trends():
+    url = "http://127.0.0.1:5000/trends"
     response = requests.get(url)
     graphJSON = response.content.decode("UTF-8")
-    return render_template("index.html", graphJSON=graphJSON)
+    return render_template("trends.html", graphJSON=graphJSON)
 
 
-# @app.route("/trends", methods = ['GET', 'POST'])
-# def trends():
-#     data = {}
-#     #data['date'] = request.form.get("selected_date")
-#     #data_dict = json.dumps(data)
-
-#     return render_template("index.html" )
+@app.route("/topics", methods = ['GET', 'POST'])
+def topics():
+    url = "http://127.0.0.1:5000/topics"
+    response = requests.get(url)
+    topics_html = response.content.decode("UTF-8")
+    return topics_html
 
