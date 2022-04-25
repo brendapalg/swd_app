@@ -9,4 +9,10 @@
 <script type='text/javascript'>
     var graphs = {{graphJSON | safe}};
     Plotly.plot('chart', graphs, {});
-</script></html>
+</script>
+<form action="{{url_for('trends')}}" method="POST">
+    <label for="date">Enter date (yyyy-mm):</label>
+    <input type="text" id="date" name="date"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <br></br>
