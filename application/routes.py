@@ -13,7 +13,7 @@ def home():
 @app.route("/trends", methods = ['GET', 'POST'])
 def trends():
     date = request.form.get("date")
-    url = 'http://127.0.0.1:5000/trends'#"https://swd-model.herokuapp.com/trends"
+    url = "https://swd-model.herokuapp.com/trends"
     
 
     if date is None:
@@ -33,7 +33,7 @@ def trends():
 
 @app.route("/topics", methods = ['GET', 'POST'])
 def topics():
-    url = "http://127.0.0.1:5000//topics"
+    url = "https://swd-model.herokuapp.com/topics"
     response = requests.get(url)
     topics_html = response.content.decode("UTF-8")
     return topics_html
