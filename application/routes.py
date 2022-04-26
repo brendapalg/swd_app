@@ -13,14 +13,15 @@ def home():
 @app.route("/trends", methods = ['GET', 'POST'])
 def trends():
     date = request.form.get("date")
+    topic = request.form.get("topic")
     url = "https://swd-model.herokuapp.com/trends"
     
 
-    if date is None:
+    if date is None and topic is None:
         response = requests.get(url)
         template="trends.html"
     else:
-        input_data = json.dumps({"date": date})
+        input_data = json.dumps({"date": date, "topic": topic})
         response = requests.post(url, input_data)
         template="trendsAndExamples.html"
     
@@ -28,7 +29,7 @@ def trends():
     graphJSON = data['graphJSON']
     pos = data['pos']
     neg = data['neg']
-    return render_template(template, graphJSON=graphJSON, pos = pos, neg=neg)
+    return render_template(template, graphJSON=graphJSON, pos = pos, neg=neg, topic=topic, date=date)
 
 
 @app.route("/topics", methods = ['GET', 'POST'])

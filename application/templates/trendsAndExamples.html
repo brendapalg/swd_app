@@ -13,9 +13,13 @@
 <form action="{{url_for('trends')}}" method="POST">
     <label for="date">Enter date (yyyy-mm):</label>
     <input type="text" id="date" name="date"><br><br>
+    <label for="topic">Enter topic (1-5):</label>
+    <input type="text" id="topic" name="topic"><br><br>
     <input type="submit" value="Submit">
   </form>
   <br></br>
+  <br></br>
+  <p>Examples for date: {{date}} and topic: {{topic}}</p>
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
   <div class="container">
