@@ -12,8 +12,13 @@ def home():
 
 @app.route("/trends", methods = ['GET', 'POST'])
 def trends():
-    date = request.form.get("date")
-    topic = request.form.get("topic")
+
+    try:
+        date = request.form.get("date")
+        topic = request.form.get("topic")
+    except:
+        date=None
+        topic=None
     url = "https://swd-model.herokuapp.com/trends"
     
 
